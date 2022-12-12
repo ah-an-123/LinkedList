@@ -32,16 +32,15 @@ class List{
 				headNode->setNext(NULL);
 				currentNode=NULL;
 				size=0;
-				
 			}
-		
+		// For adding an element 
 		void add(int addObject){
-			Node* newNode=new Node;
+			Node* newNode=new Node();
 			newNode->set(addObject);
 			if(currentNode!=NULL){
 				newNode->setNext(currentNode->getNext());
 				currentNode->setNext(newNode);
-				lastcurrentNode=headNode;
+				lastcurrentNode=currentNode;
 				currentNode=newNode;
 			}
 			else{
@@ -52,7 +51,53 @@ class List{
 			}
 			size++;
 		}
+// For getting an element 
+		int get(){
+			if(currentNode!=NULL){
+				return currentNode->get();
+			}
+		}
+
+        bool next(){
+			if(currentNode==NULL) {
+				
+				return false;}
+			else{
+			
+			lastcurrentNode=currentNode;
+			currentNode=currentNode->getNext(); 
+			// cout<<"Current Node is "<<currentNode<<endl;
+            if(currentNode==NULL ||size==0)
+			{ 
+				return false;
+				}
+			else
+			{
+				return true;
+			}
+			}
+		}
+		// For starting an array 
+		void start(){
+			lastcurrentNode=headNode;
+			currentNode=headNode;
+		}
+void remove(){
+	
+}
+int length(){
+	return size;
+}
+
 };
 int main(){
-	
+List abc;
+abc.add(12);
+abc.add(34);
+abc.add(43);
+while (abc.next())
+{
+	cout<<"List Elements : "<<abc.get()<<" ";
+}
+
 }
